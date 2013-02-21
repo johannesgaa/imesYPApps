@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:layout_weight="1">
+
+		<TextView android:id="@+id/textView1" android:layout_width="131dp"
+			android:layout_height="wrap_content" android:text="Master:"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<AutoCompleteTextView android:id="@+id/autoCompleteTextView1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_weight="1" android:ems="10" android:text="http://localhost:11311" />
+
+		<Button android:id="@+id/btnSetMasterURI" android:layout_width="210dp"
+			android:layout_height="wrap_content" android:text="Set"
+			android:typeface="normal" />
+
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:layout_weight="30"
+		android:orientation="horizontal">
+		
+		<Gallery android:id="@+id/gallery1" android:layout_width="0dp"
+			android:layout_height="fill_parent" android:layout_weight="1" />
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="center"
+			android:padding="5dp" android:textStyle="italic" android:text="@string/show_introshow_intro" />
+		<ImageView android:id="@+id/picture" android:layout_width="0dp"
+			android:layout_height="fill_parent" android:contentDescription="@string/picture" />
+	</LinearLayout>
+	
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:layout_weight="2" />
+
+
+</LinearLayout>
+

@@ -1,0 +1,24 @@
+/home/gaa/workspace/imesYPApps/imesYBMesse/bin/MainActivity-debug-unaligned.apk : \
+/home/gaa/workspace/imesYPApps/imesYBMesse/bin/MainActivity.ap_ \
+/home/gaa/workspace/imesYPApps/imesYBMesse/bin/classes.dex \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/bin/classes.jar \
+/home/gaa/workspace/android_core/android_gingerbread_mr1/bin/classes.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/apache_xmlrpc_server-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/rosjava-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/commons-pool-1.6.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/rosjava_messages-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.codec-1.3.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/apache_xmlrpc_common-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.net-2.0.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/dnsjava-2.1.1.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.lang-2.4.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/guava-12.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/rosjava_bootstrap-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/jsr305-1.3.9.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/ws-commons-util-1.0.1.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/rosjava_geometry-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.httpclient-3.1.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.logging-1.1.1.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/com.springsource.org.apache.commons.io-1.4.0.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/apache_xmlrpc_client-0.0.0-SNAPSHOT.jar \
+/home/gaa/workspace/android_core/android_honeycomb_mr2/libs/netty-3.5.2.Final.jar \
