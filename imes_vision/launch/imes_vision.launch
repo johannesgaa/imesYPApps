@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>	
+		
+	<!-- Run camera node -->
+	<include file="$(find usb_cam)/launch/usb_cam_calibrated.launch" />
+	
+	<!-- Run imes_vision ObjectFinder Server-->
+	<node name="imes_vision" pkg="imes_vision" type="ObjectFinder" respawn="false" />
+	
+</launch>

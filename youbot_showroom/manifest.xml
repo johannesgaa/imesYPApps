@@ -1,0 +1,19 @@
+<package>
+  <description brief="youbot_showroom">
+
+     youbot_showroom
+
+  </description>
+  <author>Andreas Fregin</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/youbot_showroom</url>
+
+  <depend package="roscpp" />
+  <depend package="imes_vision" />
+  <depend package="youbot_kinematics" />
+  <depend package="std_msgs" />
+
+</package>
+
+

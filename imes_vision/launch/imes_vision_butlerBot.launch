@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>	
+	
+	<!-- Run OODL node -->
+	<include file="$(find youbot_oodl)/launch/youbot_oodl_driver.launch" />
+	
+	
+	<!-- Run navigation node -->
+	<include file="$(find youbot_2dnav)/launch/autonomous_butlerBot_navigation.launch" />	
+	
+		
+	<!-- Run camera node -->
+	<include file="$(find usb_cam)/launch/usb_cam_YB02arm.launch" />
+	
+	
+	<!-- Run imes_vision ObjectFinder Server-->
+	<node name="imes_vision" pkg="imes_vision" type="ObjectFinder" args="noScreen" respawn="false" />
+	
+</launch>

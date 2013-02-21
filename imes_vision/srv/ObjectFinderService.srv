@@ -1,0 +1,16 @@
+#request fields
+int32 searchType
+string className
+string name
+string shapeName
+string shapePath
+string featurePath
+int32 numberOfPictures
+int32 height
+int32 width
+---
+#response fields
+int32 objectsFound
+string[] objectNames
+nav_msgs/Path objectPoses
+float32 featureCompliance

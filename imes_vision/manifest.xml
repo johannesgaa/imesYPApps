@@ -1,0 +1,32 @@
+<package>
+  <description brief="imes_vision">
+
+     The official imes vision package
+	Originally part ob imes_butlerBot-project
+	This is a two stage object detector service. You need a matching client to use it!
+
+  </description>
+  <author>Andreas Fregin (a.fregin@live.de), Benjamin Munske (Benjamin.Munske@imes.uni-hannover.de)</author>
+  <license></license>
+  <review status="unreviewed" notes=""/>
+  <url>http://www.imes.uni-hannover.de</url>
+  
+  <depend package="image_transport"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="sensor_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="nav_msgs"/>
+  <depend package="tf"/>
+  <depend package="bullet" />
+  <depend package="yaml_cpp" />
+  <depend package="dynamic_reconfigure" />
+  <rosdep name="boost" />
+  <export>
+    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -limes_vision"/>
+  </export>
+</package>
+
+
+

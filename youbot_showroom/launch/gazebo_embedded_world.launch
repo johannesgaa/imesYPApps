@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>	
+	
+	<!-- Run gazebo node -->
+	<include file="$(find youbot_environments)/launch/RobotChallenge_Robolab.launch" />
+	
+	<!-- Run manipulator node -->
+	<node name="embedded_worlds_manipulator" pkg="youbot_showroom" type="embedded_worlds" args="" respawn="false" />
+	 
+	<!-- Run imes_vision ObjectFinder Server-->
+	<node name="embedded_worlds__vision" pkg="imes_vision" type="FeatureFinder" args="" respawn="false" />
+	
+</launch>

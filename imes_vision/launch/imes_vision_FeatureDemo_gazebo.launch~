@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>	
+
+	<!-- USE SIMULATOR TIME -->
+	<param name="/use_sim_time" value="true" />
+	
+	
+	<!-- LOAD A YOUBOT EQUIPPED WITH CAMERA -->
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find youbot_description)/robots/youbot.urdf.xacro'"/>
+	
+	
+	<!-- LODE SOME OBJECTS -->
+	<!-- load a becks_bottle -->
+	<param name="becks_bottle_file" textfile="$(find imes_butlerBot)/resources/gazebo_objects/better_becks_bottle.urdf" />
+	<!-- load a krombacher_bottle -->
+	<param name="krombacher_bottle_file" textfile="$(find imes_butlerBot)/resources/gazebo_objects/krombacher_bottle.urdf" />
+	<!-- load a herri_bottle -->
+	<param name="herri_bottle_brown_file" textfile="$(find imes_butlerBot)/resources/gazebo_objects/herri_bottle_brown.urdf" />
+	
+	
+	<!-- LOAD GAZEBO AND SPAWN OBJECTS -->
+	<node name="gazebo" pkg="gazebo" type="gazebo" args="$(find gazebo_worlds)/worlds/empty.world" respawn="false" output="screen">
+		<env name="GAZEBO_RESOURCE_PATH" value="$(find youbot_description):$(find gazebo_worlds):$(find gazebo)/gazebo/share/gazebo" />
+		<remap from="base_controller/command" to="cmd_vel"/>
+		<remap from="scan_front" to="scan"/>
+		<remap from="/base_odometry/odom" to="/odom" />
+	</node>
+	<node name="youbot_gazebo_model" pkg="gazebo" type="spawn_model" args="-urdf -param robot_description -model youBot -x 0.6 -y 0 -z 0.1 -Y 3.1414526" respawn="false" output="screen" />
+	<node name="herri_bottle_brown" pkg="gazebo" type="spawn_model" args="-urdf -param herri_bottle_brown_file -x 0 -y -0.1 -z 0.091 -Y -1.57 -model herri_bottle_brown" respawn="false" />
+	<node name="krombacher_bottle" pkg="gazebo" type="spawn_model" args="-urdf -param krombacher_bottle_file -x 0 -y +0.1 -z 0.091 -Y -1.57 -model krombacher_bottle" respawn="false" />
+	<node name="becks_bottle" pkg="gazebo" type="spawn_model" args="-urdf -param becks_bottle_file -x -0.0 -y -0.0 -z 0.091 -Y -1.57 -model becks_bottle" respawn="false" />
+	
+	<!-- RUN YOUBOT NODES -->
+	<include file="$(find youbot_description)/launch/control/youbot_base_control.launch" />
+	<include file="$(find youbot_description)/launch/control/youbot_gripper_control.launch" />
+	<node pkg="youbot_tf" type="tf_odom" name="tf_odom" respawn="true" />
+	
+	<!-- RUN IMES_VISION FEATUREFINDER-->
+	<node name="imes_vision" pkg="imes_vision" type="FeatureFinder" args="" respawn="false" />
+	
+</launch>
