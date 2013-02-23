@@ -21,8 +21,13 @@
 //CLASS CONSTRUCTOR:
 feature_matcher::feature_matcher(): ratio(0.65), refineF(true), confidence(0.98), distance(3.0) {
 
+	//this->detector = new cv::FeatureDetector::create("SIFT");
+	//this->extractor = new cv::DescriptorExtractor::create("SIFT");
+
+	// OPEN CV 2.3 style:
 	this->detector= new cv::SiftFeatureDetector(0.03, 10.);
 	this->extractor= new cv::SiftDescriptorExtractor();
+
 
 /*
 	// SURF is the default feature
@@ -426,6 +431,9 @@ bool feature_matcher::match(cv::Mat& image1, cv::Mat& image2, // input images
 		// 2. Match the two image descriptors
 
 		// Construction of the matcher
+
+		//cv::Ptr<cv::DescriptorMatcher> matcher = new cv::DescriptorMatcher::create("BruteForceMatcher");
+		//OPEN CV 2.3 style:
 		cv::BruteForceMatcher<cv::L2<float> > matcher;
 
 		// from image 1 to image 2
