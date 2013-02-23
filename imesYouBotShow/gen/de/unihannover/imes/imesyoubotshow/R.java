@@ -53,6 +53,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int btn1=0x7f040002;
+        public static final int demo_armmotion=0x7f040004;
         public static final int demodescriptionplacer=0x7f040003;
         public static final int title_demo_detail=0x7f040001;
     }

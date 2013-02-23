@@ -29,9 +29,9 @@ public class DummyContent {
 
 	static {
 		// Add 3 sample items.
-		addItem(new DummyItem("1", "Arm Motion Demo"));
-		addItem(new DummyItem("2", "Base Motion Demo"));
-		addItem(new DummyItem("3", "Arm Base Motion Demo"));
+		addItem(new DummyItem("1", "Arm Motion Demo",1));
+		addItem(new DummyItem("2", "Base Motion Demo",2));
+		addItem(new DummyItem("3", "Arm Base Motion Demo",3));
 		//addItem(new DummyItem("4", "Tracking Object HMI Demo", android.R.drawable.menu_frame));
 		//addItem(new DummyItem("5", "Simple Detection Arm Demo ", android.R.drawable.menu_frame));
 		//addItem(new DummyItem("6", "Tower of Hanoi", android.R.drawable.menu_frame));
@@ -53,10 +53,10 @@ public class DummyContent {
 		public String content;
 		public int resourceID;
 		
-		public DummyItem(String id, String content/*, int resourceId*/) {
+		public DummyItem(String id, String content, int resourceId) {
 			this.id = id;
 			this.content = content;
-		//	this.resourceID = resourceId;
+	    	this.resourceID = resourceId;
 		}
 
 		@Override
