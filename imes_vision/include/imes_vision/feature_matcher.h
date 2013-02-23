@@ -37,6 +37,9 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv/cv.h>
 
+#include <opencv2/legacy/legacy.hpp>
+#include <opencv2/nonfree/features2d.hpp>
+
 /* ROS includes */
 #include <ros/ros.h>
 

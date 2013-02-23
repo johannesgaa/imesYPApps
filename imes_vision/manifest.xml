@@ -20,8 +20,9 @@
   <depend package="nav_msgs"/>
   <depend package="tf"/>
   <depend package="bullet" />
-  <depend package="yaml_cpp" />
   <depend package="dynamic_reconfigure" />
+  <depend package="common_rosdeps" />
+  <rosdep name="yaml-cpp" />
   <rosdep name="boost" />
   <export>
     <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -limes_vision"/>
