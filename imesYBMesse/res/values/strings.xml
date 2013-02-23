@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">MainActivity</string>
     <string name="show_intro">show_intro</string>
     <string name="picture">picture</string>
     <string name="show_introshow_intro">show_introshow_intro</string>
+    <string name="title_demo_list">Demos</string>
+    <string name="title_demo_detail">Demo Detail</string>
+
 </resources>

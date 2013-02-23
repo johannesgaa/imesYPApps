@@ -8,12 +8,12 @@ package org.ros.android.android_gingerbread_mr1;
 
 public final class R {
 	public static final class id {
-		public static final int master_chooser_qr_code_button = 0x7f050008;
-		public static final int master_chooser_cancel = 0x7f05000a;
-		public static final int linearLayout1 = 0x7f050006;
-		public static final int master_chooser_new_master_button = 0x7f050009;
-		public static final int master_chooser_uri = 0x7f050005;
-		public static final int master_chooser_ok = 0x7f050007;
+		public static final int master_chooser_qr_code_button = 0x7f050006;
+		public static final int master_chooser_cancel = 0x7f050008;
+		public static final int linearLayout1 = 0x7f050004;
+		public static final int master_chooser_new_master_button = 0x7f050007;
+		public static final int master_chooser_uri = 0x7f050003;
+		public static final int master_chooser_ok = 0x7f050005;
 	}
 	public static final class string {
 		public static final int qr_code = 0x7f040002;
@@ -23,7 +23,7 @@ public final class R {
 		public static final int new_master = 0x7f040004;
 	}
 	public static final class layout {
-		public static final int master_chooser = 0x7f030001;
+		public static final int master_chooser = 0x7f030005;
 	}
 	public static final class drawable {
 		public static final int icon = 0x7f020001;
