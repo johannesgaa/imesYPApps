@@ -13,7 +13,7 @@
 #include <youbot_showroom/launcher_message.h>
 
 youbot_arm_kinematics* manipulator;
-ros::NodeHandle nh;
+ros::NodeHandle* nh;
 ros::Publisher pub;
 
 #endif /* 2013_EMBEDDED_WORLDS_H_ */

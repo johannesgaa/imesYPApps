@@ -31,6 +31,10 @@ int main(int argc, char **argv) {
 	ROS_INFO("YouBot@embedded_worlds_2013 initializing..");
 	ros::init(argc, argv, "embedded_wolrds_2013");
 
+	nh = new ros::NodeHandle;
+
+	pub = nh->advertise<youbot_showroom::launcher_message>("/launcher_server", 1);
+
 	ROS_INFO(".. please start your detector ..");
 
 	ROS_INFO("..loading manipulator class ..");
@@ -65,6 +69,13 @@ int main(int argc, char **argv) {
 		manipulator->moveToPose();
 		ros::Duration(5.0).sleep();
 	}
+
+	youbot_showroom::launcher_message msg;
+	msg.demoNumber = 0;
+	msg.demoName = "";
+	msg.duration.sec = 0;
+	msg.duration.nsec = 0;
+	pub.publish(msg);
 
 	return 0;
 }
