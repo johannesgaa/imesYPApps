@@ -1,12 +1,13 @@
 package de.unihannover.imes.imesyoubotshow;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import de.unihannover.imes.imesyoubotshow.dummy.DummyContent;
 
 /**
@@ -54,10 +55,13 @@ public class DemoDetailFragment extends Fragment {
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
-			//((TextView) rootView.findViewById(R.id.textView1))
-			//		.setText(mItem.content);
+			((TextView) rootView.findViewById(R.id.textView1))
+				.setText(mItem.content);
+			((TextView) rootView.findViewById(R.id.textView2))
+			.setText(getString(mItem.description));
 		}
 
 		return rootView;
 	}
+	
 }

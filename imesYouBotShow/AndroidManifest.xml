@@ -30,6 +30,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DemoListActivity" />
         </activity>
+        <activity
+            android:name="de.unihannover.imes.imesyoubotshow.ImesArmMotionDemo"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_imes_arm_motion_demo"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>

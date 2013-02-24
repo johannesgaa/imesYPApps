@@ -5,9 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ros.android.view.camera.RosCameraPreviewView;
+
+import de.unihannover.imes.imesyoubotshow.rosDemoCaller;
 import de.unihannover.imes.imesyoubotshow.R.drawable;
 
 import android.R;
+import android.widget.ImageView;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -29,14 +33,14 @@ public class DummyContent {
 
 	static {
 		// Add 3 sample items.
-		addItem(new DummyItem("1", "Arm Motion Demo",1));
-		addItem(new DummyItem("2", "Base Motion Demo",2));
-		addItem(new DummyItem("3", "Arm Base Motion Demo",3));
-		//addItem(new DummyItem("4", "Tracking Object HMI Demo", android.R.drawable.menu_frame));
-		//addItem(new DummyItem("5", "Simple Detection Arm Demo ", android.R.drawable.menu_frame));
-		//addItem(new DummyItem("6", "Tower of Hanoi", android.R.drawable.menu_frame));
-		//addItem(new DummyItem("7", "Tablet Control Demo", android.R.drawable.menu_frame));
-		//addItem(new DummyItem("8", "Kinect Control HMI Demo", android.R.drawable.menu_frame));
+		addItem(new DummyItem("1", "Arm Motion Demo",  de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demo_armmotion));
+		addItem(new DummyItem("2", "Base Motion Demo",de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("3", "Arm Base Motion Demo",de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("4", "Tracking Object HMI Demo", de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("5", "Simple Detection Arm Demo ", de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("6", "Tower of Hanoi", de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("7", "Tablet Control Demo", de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
+		addItem(new DummyItem("8", "Kinect Control HMI Demo", de.unihannover.imes.imesyoubotshow.R.drawable.omniwheel, de.unihannover.imes.imesyoubotshow.R.string.demodescriptionplacer));
 		
 	}
 
@@ -51,13 +55,19 @@ public class DummyContent {
 	public static class DummyItem {
 		public String id;
 		public String content;
+		public int description;
 		public int resourceID;
 		
-		public DummyItem(String id, String content, int resourceId) {
+		public DummyItem(String id, String content, int resourceId, int desc) {
 			this.id = id;
 			this.content = content;
+			description = desc;
 	    	this.resourceID = resourceId;
-		}
+	   
+	    	}
+	    	
+	    	
+		
 
 		@Override
 		public String toString() {

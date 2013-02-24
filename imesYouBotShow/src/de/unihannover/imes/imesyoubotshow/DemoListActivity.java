@@ -1,8 +1,12 @@
 package de.unihannover.imes.imesyoubotshow;
 
+import de.unihannover.imes.imesyoubotshow.dummy.DummyContent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+
 
 /**
  * An activity representing a list of Demos. This activity has different
@@ -27,6 +31,8 @@ public class DemoListActivity extends FragmentActivity implements
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private int mSelectedID;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,7 @@ public class DemoListActivity extends FragmentActivity implements
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
 					.replace(R.id.demo_detail_container, fragment).commit();
+			mSelectedID = Integer.parseInt(id);;
 
 		} else {
 			// In single-pane mode, simply start the detail activity
@@ -73,5 +80,52 @@ public class DemoListActivity extends FragmentActivity implements
 			detailIntent.putExtra(DemoDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		}
+	}
+	
+	public void OnIMESLogo(View view){
+	    Uri uriUrl = Uri.parse("http://www.imes.uni-hannover.de/");  
+	    Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);  
+	    startActivity(launchBrowser);  
+	
+	}
+	
+	public void OnLUHLogo(View view){
+		 Uri uriUrl = Uri.parse("http://www.uni-hannover.de/");  
+         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);  
+		 startActivity(launchBrowser);  
+		
+	}
+	
+	public void OnRun(View view){
+		
+		//switchcase fuer alle activities
+		switch(mSelectedID)
+		{
+		case 1:
+			Intent armmotiondemo = new Intent(this, ImesArmMotionDemo.class);
+			startActivity(armmotiondemo);
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		default:
+			break;
+		
+		}
+		
+		
+		
+		
 	}
 }

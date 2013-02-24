@@ -48,7 +48,8 @@
             android:id="@+id/imageView2"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:src="@drawable/imeslogo_qr" />
+            android:src="@drawable/imeslogo_qr" 
+            android:onClick="OnIMESLogo"/>
 
         <Button
             android:id="@+id/button1"
@@ -56,15 +57,17 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="Run" />
+            android:text="Run"
+            />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
+            android:layout_width="400dp"
             android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/luh" />
+            android:src="@drawable/luh" 
+            android:onClick="OnLUHLogo"/>
 
     </RelativeLayout>
 
