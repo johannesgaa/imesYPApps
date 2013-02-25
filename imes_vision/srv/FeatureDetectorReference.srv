@@ -1,0 +1,13 @@
+# FeatureDetectorReference.srv
+# Part of imes_vision for Messe Application
+#
+# Andreas Fregin (A.Fregin AT live.de)
+# Leibniz Universitaet Hannover
+#
+# Version 1.0:		# 2013-02-25
+#
+#request fields
+int32 refNum		# 1= imes-logo, 2=tq-logo
+---
+#response fields
+int32 response		# 0 = reference set, else = something went wrong

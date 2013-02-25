@@ -46,6 +46,9 @@
 /* Detector Class */
 #include <imes_vision/ObjectFinder.h>
 
+/* Service */
+#include <imes_vision/FeatureDetectorReference.h>
+
 /**
  * @brief Demonstration class for Feature Detection
  */
@@ -89,6 +92,14 @@ public:
 	void changeReference(int logo);
 
 	/**
+	 * @brief service method
+	 * @param req Service Request
+	 * @param resp Service Response
+	 */
+	bool Service(imes_vision::FeatureDetectorReference::Request &req,
+			imes_vision::FeatureDetectorReference::Response &res);
+
+	/**
 	 * @brief structure that holds basic data of an detectable object
 	 */
 	struct testObject {
@@ -102,6 +113,7 @@ public:
 private:
 
 	ros::NodeHandle nh;								///< ros node handle
+	ros::ServiceServer rev_service;					///< ros service for changing the object reference
 
 	image_transport::Subscriber image_sub;			///< ros image subscriber
 	image_transport::ImageTransport it;				///< ros image transporter

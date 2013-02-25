@@ -78,6 +78,7 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 	/* Registering callback and service */
 	this->image_sub = it.subscribe(cameraTopic,   1, &rc_features::imageCallback, this);
 	this->image_pub = it.advertise("/imes_vision/image_detect", 1);
+	this->rev_service = nh.advertiseService("/imes_vision/change_reference", &rc_features::Service, this);
 
 	/* setting feature matcher settings */
 	changeReference(2);
@@ -100,6 +101,21 @@ void rc_features::imageCallback(const sensor_msgs::ImageConstPtr& msg) {
         return;
 	}
 	cb_mutex.unlock();
+}
+
+
+bool rc_features::Service(imes_vision::FeatureDetectorReference::Request &req,
+											imes_vision::FeatureDetectorReference::Response &res) {
+
+	if (req.refNum !=1 && req.refNum !=2) {
+		ROS_WARN("Client asked for invalid object!");
+		res.response = 0;
+	} else {
+		ROS_INFO("Client changed reference to %d", (int)req.refNum);
+		changeReference(req.refNum);
+		res.response = -1;
+	}
+	return true;
 }
 
 void rc_features::changeReference() {
