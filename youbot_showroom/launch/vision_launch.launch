@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>	
+	
+	<!-- Run camera node -->
+	<include file="$(find usb_cam)/launch/usb_cam_YB02arm.launch" />
+	 
+	<!-- Run imes_vision ObjectFinder Server-->
+	<node name="embedded_worlds__vision" pkg="imes_vision" type="FeatureFinder" args="" respawn="false" output="screen"/>
+	
+</launch>
