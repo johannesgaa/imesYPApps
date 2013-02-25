@@ -77,6 +77,7 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 
 	/* Registering callback and service */
 	this->image_sub = it.subscribe(cameraTopic,   1, &rc_features::imageCallback, this);
+	this->change_sub = nh.subscribe("/change_referece", 1, &rc_features::changeCallback, this);
 	this->image_pub = it.advertise("/imes_vision/image_detect", 1);
 	this->rev_service = nh.advertiseService("/imes_vision/change_reference", &rc_features::Service, this);
 
@@ -85,6 +86,20 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 
 	/* INIT DONE */
 	ROS_INFO("Object Finder Service started!");
+}
+
+void rc_features::changeCallback(const std_msgs::StringConstPtr msg) {
+
+	if (strcmp(msg->data.c_str(), "imes") == 0) {
+		changeReference(1);
+	}
+	else {
+		if (strcmp(msg->data.c_str(), "tq") == 0) {
+			changeReference(2);
+			} else {
+				ROS_WARN("The User requested an invalid object");
+			}
+	}
 }
 
 void rc_features::imageCallback(const sensor_msgs::ImageConstPtr& msg) {
