@@ -107,14 +107,15 @@ void rc_features::imageCallback(const sensor_msgs::ImageConstPtr& msg) {
 bool rc_features::Service(imes_vision::FeatureDetectorReference::Request &req,
 											imes_vision::FeatureDetectorReference::Response &res) {
 
-	if (req.refNum !=1 && req.refNum !=2) {
-		ROS_WARN("Client asked for invalid object!");
-		res.response = 0;
-	} else {
-		ROS_INFO("Client changed reference to %d", (int)req.refNum);
-		changeReference(req.refNum);
-		res.response = -1;
-	}
+    if (req.refNum !=1 && req.refNum !=2) {
+        ROS_WARN("Client asked for invalid object!");
+        res.response = 0;
+    } else {
+        ROS_INFO("Client changed reference to %d", (int)req.refNum);
+        changeReference(req.refNum);
+        res.response = -1;
+    }
+
 	return true;
 }
 
