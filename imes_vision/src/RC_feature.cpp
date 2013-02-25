@@ -57,13 +57,16 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 	}
 
 	// Default object to find
-	tstObj= imes_logo;
+	tstObj= tq_logo;
+	minFeatures = 5;
 	match = false;
+
+	roscv_outImage.header.seq = 0;
 
 	if (showCVwindows == true) {
 		ROS_INFO("ObjectFinder will show image-windows.");
 		this->showWindows = true;
-		my_feature_matcher.showWindows = false;
+		my_feature_matcher.showWindows = true;
 		cv::namedWindow("Cam_Stream", CV_WINDOW_AUTOSIZE);
 		cv::startWindowThread();
 	} else {
@@ -73,11 +76,11 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 	}
 
 	/* Registering callback and service */
-	this->image_sub  = it.subscribe(cameraTopic,   1, &rc_features::imageCallback, this);
+	this->image_sub = it.subscribe(cameraTopic,   1, &rc_features::imageCallback, this);
+	this->image_pub = it.advertise("/imes_vision/image_detect", 1);
 
 	/* setting feature matcher settings */
-	my_feature_matcher.setRobustness(2, 7);
-	my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
+	changeReference(2);
 
 	/* INIT DONE */
 	ROS_INFO("Object Finder Service started!");
@@ -108,10 +111,14 @@ void rc_features::changeReference(int logo) {
 
 	if (logo == 1) {
 		tstObj = imes_logo;
+		minFeatures = 5;
+		my_feature_matcher.setRobustness(3, minFeatures);
 		my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
 	}
 	if (logo == 2) {
 		tstObj = tq_logo;
+		minFeatures = 4;
+		my_feature_matcher.setRobustness(3, minFeatures);
 		my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
 	}
 }
@@ -125,9 +132,9 @@ void rc_features::rc_feature_main() {
 
 	// define ROI around gripper_space
 	roiBox.x=(int)(0.40 * this->origFrame.size().width);
-	roiBox.y=(int)(0.25 * this->origFrame.size().height);
+	roiBox.y=(int)(0.35 * this->origFrame.size().height);
 	roiBox.width=(int)(0.20 * this->origFrame.size().width);
-	roiBox.height=(int)(0.5 * this->origFrame.size().height);
+	roiBox.height=(int)(0.3 * this->origFrame.size().height);
 
 	// save ROI for detection in new Mat
 	stickerROI = this->origFrame(roiBox);
@@ -193,7 +200,15 @@ void rc_features::displayer() {
 	cv::Mat roi1 = output(cv::Rect(0,               0,                this->origFrame.size().width, this->origFrame.size().height));
 	this->origFrame.copyTo(roi1);
 	flipped.copyTo(roi2);
-	cv::imshow("Cam_Stream", output);
+	if (showWindows)
+		cv::imshow("Cam_Stream", output);
+
+	roscv_outImage.header.seq++;
+	roscv_outImage.header.stamp = ros::Time::now();
+	roscv_outImage.header.frame_id = "/youbot_RC_vision/objectFinder";
+	roscv_outImage.encoding = "bgr8";
+	roscv_outImage.image = origFrame;
+	image_pub.publish(roscv_outImage.toImageMsg());
 }
 
 /**

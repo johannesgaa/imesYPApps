@@ -105,6 +105,7 @@ private:
 
 	image_transport::Subscriber image_sub;			///< ros image subscriber
 	image_transport::ImageTransport it;				///< ros image transporter
+	image_transport::Publisher image_pub;			///< ros image publisher
 
 	feature_matcher my_feature_matcher;				///< feature matching class
 
@@ -115,9 +116,13 @@ private:
 	bool showWindows;								///< (de)-activates graphical output
 	bool match;										///< indicated if object is detected
 
+	int minFeatures;								///< minimal Features to recognize the object
+
 	testObject tstObj;								///< object to detect
-	testObject imes_logo;
-	testObject tq_logo;
+	testObject imes_logo;							///< object 1
+	testObject tq_logo;								///< object 2
+
+	cv_bridge::CvImage roscv_outImage;				///< data format for reublishing image
 
 	std::vector<cv::DMatch> matches;				///< descriptor matches
 	std::vector<cv::KeyPoint> keypoints1;			///< keypoints of live image
