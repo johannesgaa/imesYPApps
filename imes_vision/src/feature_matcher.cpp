@@ -410,6 +410,13 @@ bool feature_matcher::match(cv::Mat& image1, cv::Mat& image2, // input images
 	printf("Ref1\tRef2\tRef3\tRef4\tRef5\tRef6\tRef7\tRef8");
 	std::cout << std::endl;
 
+	if (descriptors1.rows == 0 || descriptors1.cols == 0) {
+		printf("0\t0\t0\t0\t0\t0\t0\t0\n");
+		printf("No Keypoints identified from camera. ??Looking at a plain scene??\n");
+		return false;
+	}
+
+
 	int featureMatches[2][numOfRefPics];
 	int positiveRef;
 	float highestMatch;
@@ -488,12 +495,14 @@ bool feature_matcher::match(cv::Mat& image1, cv::Mat& image2, // input images
 					std::cout << "Number of matched points (symmetry test): "
 							<< symMatches.size() << std::endl;
 					stableMatches = symMatches.size();
+					featureMatches[1][i]= symMatches.size();
 
 					// 5. Validate matches using RANSAC
 					if (rsacTest) {
 						cv::Mat fundemental = ransacTest(symMatches, keypoints1,
 								keypoints2, matches);
 						stableMatches = matches.size();
+						featureMatches[1][i]= symMatches.size();
 					}
 				}
 			}
@@ -538,7 +547,7 @@ bool feature_matcher::match(cv::Mat& image1, cv::Mat& image2, // input images
 		return true;
 	}
 	// "else"
-	if (this->showWindows) {
+	if (this->showWindows && (keypoints1.size() > 0)) {
 		image1.copyTo(matchesMat);
 		onScreenText.str(std::string());
 		onScreenText << "This is not the wanted object!";
