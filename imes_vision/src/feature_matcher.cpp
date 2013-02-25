@@ -147,7 +147,7 @@ void feature_matcher::setReference(std::string path, int numPics) {
 	if (numPics < 8) {
 		std::cout << "You provided only " << numPics << " Pictures." << std::endl;
 		std::cout << "By providing less than 8 to 12 pictures the robot may not be able to identify your object correctly! Press any key to continue anyway." << std::endl;
-		cv::waitKey(0);
+//		cv::waitKey(0);
 	}
 
 	for (int i=1; i<= numPics; i++) {
@@ -158,7 +158,7 @@ void feature_matcher::setReference(std::string path, int numPics) {
 		std::cout << "Loading " << i << ". reference Picture ..." << std::endl;
 		if ((!image.data) || (!image.data)) {
 				std::cout << "Error while loading picture" << std::endl;
-				cv::waitKey(0);
+//                cv::waitKey(0);
 		}
 		else {
 			// Add image to reference image array
