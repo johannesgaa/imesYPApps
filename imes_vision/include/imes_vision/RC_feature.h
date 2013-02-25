@@ -83,6 +83,12 @@ public:
 	void changeReference();
 
 	/**
+	 * @brief method to change object to find
+	 * @param logo number (1=imes, 2=tq)
+	 */
+	void changeReference(int logo);
+
+	/**
 	 * @brief structure that holds basic data of an detectable object
 	 */
 	struct testObject {
@@ -110,6 +116,8 @@ private:
 	bool match;										///< indicated if object is detected
 
 	testObject tstObj;								///< object to detect
+	testObject imes_logo;
+	testObject tq_logo;
 
 	std::vector<cv::DMatch> matches;				///< descriptor matches
 	std::vector<cv::KeyPoint> keypoints1;			///< keypoints of live image

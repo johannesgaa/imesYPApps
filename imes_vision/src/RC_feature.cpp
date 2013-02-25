@@ -30,59 +30,34 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 	// Objects
 	// getting path of product files:
 	std::string fPath, tmp;
-	fPath= ros::package::getPath("imes_butlerBot");
+	fPath= ros::package::getPath("imes_vision");
 	tmp= fPath;
-
-	testObject Becks;
-	testObject Sol;
-	testObject Indio;
-	testObject XX;
 
 	// initialize some Objects:
 	if (true) {
 		tmp= fPath;
-		tmp.append("/resources/products/Sol");
-		Sol.featurePath = tmp;
-		Sol.numOfPics = 6;
+		tmp.append("/resources/FeatureDetector/IMES-logo");
+		imes_logo.featurePath = tmp;
+		imes_logo.numOfPics = 4;
 		tmp= fPath;
-		tmp.append("/resources/shapes/std_beer_bottle_033.png");
-		Sol.shapePath = tmp;
-		Sol.shapeHeight = 235;
-		Sol.shapeWidth = 60;
+		tmp.append("");
+		imes_logo.shapePath = tmp;
+		imes_logo.shapeHeight = 235;
+		imes_logo.shapeWidth = 60;
 
 		tmp= fPath;
-		tmp.append("/resources/products/Indio");
-		Indio.featurePath = tmp;
-		Indio.numOfPics = 5;
+		tmp.append("/resources/FeatureDetector/TQ-logo");
+		tq_logo.featurePath = tmp;
+		tq_logo.numOfPics = 4;
 		tmp= fPath;
-		tmp.append("/resources/shapes/std_beer_bottle_033.png");
-		Indio.shapePath = tmp;
-		Indio.shapeHeight = 235;
-		Indio.shapeWidth = 60;
-
-		tmp= fPath;
-		tmp.append("/resources/products/XX");
-		XX.featurePath = tmp;
-		XX.numOfPics = 5;
-		tmp= fPath;
-		tmp.append("/resources/shapes/std_beer_bottle_033.png");
-		XX.shapePath = tmp;
-		XX.shapeHeight = 235;
-		XX.shapeWidth = 60;
-
-		tmp= fPath;
-		tmp.append("/resources/products/Becks_Pils_033");
-		Becks.featurePath = tmp;
-		Becks.numOfPics = 8;
-		tmp= fPath;
-		tmp.append("/resources/shapes/std_beer_bottle_033.png");
-		Becks.shapePath = tmp;
-		Becks.shapeHeight = 235;
-		Becks.shapeWidth = 60;
+		tmp.append("");
+		tq_logo.shapePath = tmp;
+		tq_logo.shapeHeight = 235;
+		tq_logo.shapeWidth = 60;
 	}
 
 	// Default object to find
-	tstObj= Becks;
+	tstObj= imes_logo;
 	match = false;
 
 	if (showCVwindows == true) {
@@ -108,7 +83,6 @@ rc_features::rc_features(std::string cameraTopic, bool showCVwindows) : it(nh), 
 	ROS_INFO("Object Finder Service started!");
 }
 
-
 void rc_features::imageCallback(const sensor_msgs::ImageConstPtr& msg) {
 	cb_mutex.lock();
 	cv_bridge::CvImagePtr cv_ptr;
@@ -128,6 +102,18 @@ void rc_features::imageCallback(const sensor_msgs::ImageConstPtr& msg) {
 void rc_features::changeReference() {
 
 	my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
+}
+
+void rc_features::changeReference(int logo) {
+
+	if (logo == 1) {
+		tstObj = imes_logo;
+		my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
+	}
+	if (logo == 2) {
+		tstObj = tq_logo;
+		my_feature_matcher.setReference(tstObj.featurePath, tstObj.numOfPics);
+	}
 }
 
 void rc_features::rc_feature_main() {
