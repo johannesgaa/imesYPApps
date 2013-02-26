@@ -1,0 +1,27 @@
+<package>
+  <description brief="youbot_motion_control">
+
+     This youbot_motion_control package contains a library and an example node for motion planning for the KUKA youBot
+
+  </description>
+  <author>Eduard Popp (eduardpopp@web.de)</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/youbot_motion_control</url>
+  
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="brics_actuator"/>
+  <depend package="youbot_kinematics"/>
+  <depend package="bullet"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lyoubot_motion_control"/>
+  </export>
+
+</package>
+
+

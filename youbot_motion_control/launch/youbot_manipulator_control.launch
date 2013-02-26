@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<!--<include file="$(find youbot_description)/launch/youbot_description.launch" />-->
+	<!--<include file="$(find youbot_description)/launch/youbot_publisher.launch" />-->
+
+	<node pkg="youbot_manipulator" type="gui_manipulator" name="gui_manipulator" output="screen">
+		<param name="configFile" type="string" value="$(find youbot_driver)/config/youbot-manipulator.cfg" />
+		
+	</node>
+
+	<node pkg="imes_controll" type="control_publisher" name="control_publisher" output="screen">
+                <param name="configFile" type="string" value="$(find youbot_driver)/config/youbot-manipulator.cfg" />
+		
+	</node>
+		
+</launch>

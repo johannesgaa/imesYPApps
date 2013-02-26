@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- start the youbot_motion_control example node -->
+	<node pkg="youbot_motion_control" type="controlPublisher" name="motionPlanning" output="screen">
+        <param name="configFile" type="string" value="$(find youbot_driver)/config/youbot-manipulator.cfg" />
+	</node>
+</launch>

@@ -1,0 +1,50 @@
+cmake_minimum_required(VERSION 2.4.6)
+include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+
+# Set the build type.  Options are:
+#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
+#  Debug          : w/ debug symbols, w/o optimization
+#  Release        : w/o debug symbols, w/ optimization
+#  RelWithDebInfo : w/ debug symbols, w/ optimization
+#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
+set(ROS_BUILD_TYPE Debug)
+
+rosbuild_init()
+
+#rosbuild_find_ros_package(youbot_driver)
+#ADD_DEFINITIONS(-DYOUBOT_CONFIGURATIONS_DIR="${youbot_driver_PACKAGE_PATH}/config/")
+
+set(INCLUDE_FILES include/youbot_motion_control/motionPlanning.hpp)
+set(MAPLE_FILES include/youbot_motion_control/Jacobi/getJ.mc
+                include/youbot_motion_control/Jacobi/getqDot_MAT.mc
+                include/youbot_motion_control/Jacobi/invMAT.mc
+                include/youbot_motion_control/Jacobi/getTE0.mc)
+
+
+#set the default path for built executables to the "bin" directory
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set the default path for built libraries to the "lib" directory
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+#include_directories("/opt/ros/electric/stacks/cob_common/brics_actuator/msg_gen/cpp/include")
+#include_directories("/opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include")
+#include_directories("./../youbot_kinematics/include")
+#link_directories("./../youbot_kinematics/lib")
+
+#uncomment if you have defined messages
+rosbuild_genmsg()
+#uncomment if you have defined services
+#rosbuild_gensrv()
+#example/meinTest.cpp
+#common commands for building c++ executables and libraries
+rosbuild_add_library(${PROJECT_NAME} src/motionPlanning.cpp  ${MAPLE_FILES})
+#rosbuild_add_boost_directories()
+#rosbuild_link_boost(${PROJECT_NAME} thread)
+#rosbuild_add_executable(controlPublisher example/controlPublisher.cpp ${INCLUDE_FILES})
+#rosbuild_add_executable(controlUnit test/src/controlUnit.cpp ${INCLUDE_FILES} test/include/controlUnit.hpp)
+#message(${PROJECT_NAME})
+#target_link_libraries(controlPublisher ${PROJECT_NAME})
+#target_link_libraries(controlUnit ${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} youbot_arm_kinematics)
+
+
+
