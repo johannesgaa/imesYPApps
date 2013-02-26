@@ -34,6 +34,7 @@
 /* ROS Includes */
 #include <ros/ros.h>
 #include <ros/package.h>
+#include <std_msgs/String.h>
 #include <image_transport/image_transport.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -69,6 +70,7 @@ public:
 	 */
 	void imageCallback(const sensor_msgs::ImageConstPtr& msg);
 
+	void changeCallback(const std_msgs::StringConstPtr msg);
 
 	/**
 	 * @brief Main method
@@ -114,6 +116,7 @@ private:
 
 	ros::NodeHandle nh;								///< ros node handle
 	ros::ServiceServer rev_service;					///< ros service for changing the object reference
+	ros::Subscriber change_sub;						///< subscriber for changing object to detect
 
 	image_transport::Subscriber image_sub;			///< ros image subscriber
 	image_transport::ImageTransport it;				///< ros image transporter
